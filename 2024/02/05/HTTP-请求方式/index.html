@@ -16,22 +16,27 @@
   <meta name="author" content="8a1dr">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://example.com/2024/02/01/test/index.html">
+    <meta name="description" content="CTFHUB是一个在线平台，主要用于网络安全爱好者进行攻防演练，提升自己的技能。本篇学习web前置技能HTTP协议的请求方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP-请求方式">
+<meta property="og:url" content="http://example.com/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Ph-1">
+<meta property="og:description" content="CTFHUB是一个在线平台，主要用于网络安全爱好者进行攻防演练，提升自己的技能。本篇学习web前置技能HTTP协议的请求方式。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/02/01/test/sunset.jpg">
-<meta property="article:published_time" content="2024-01-31T19:34:33.000Z">
-<meta property="article:modified_time" content="2024-02-05T06:58:28.507Z">
+<meta property="og:image" content="http://example.com/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/%E9%A2%98%E7%9B%AE.png">
+<meta property="og:image" content="http://example.com/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/%E9%94%99%E8%AF%AF.png">
+<meta property="og:image" content="http://example.com/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/curl.png">
+<meta property="og:image" content="http://example.com/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/bp.png">
+<meta property="article:published_time" content="2024-02-05T05:06:56.000Z">
+<meta property="article:modified_time" content="2024-02-06T15:38:23.176Z">
 <meta property="article:author" content="8a1dr">
-<meta property="article:tag" content="测试文件">
+<meta property="article:tag" content="CTFHUB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2024/02/01/test/sunset.jpg">
+<meta name="twitter:image" content="http://example.com/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/%E9%A2%98%E7%9B%AE.png">
   
   
   
-  <title>test - Ph-1</title>
+  <title>HTTP-请求方式 - Ph-1</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="test"></span>
+            <span id="subtitle" data-typed-text="HTTP-请求方式"></span>
           
         </div>
 
@@ -208,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-01 03:34" pubdate>
-          2024年2月1日 凌晨
+        <time datetime="2024-02-05 13:06" pubdate>
+          2024年2月5日 下午
         </time>
       </span>
     
@@ -220,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          395 字
         
       </span>
     
@@ -231,7 +236,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -268,12 +273,85 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">test</h1>
+            <h1 id="seo-header">HTTP-请求方式</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/2024/02/01/test/sunset.jpg" srcset="/img/loading.gif" lazyload alt="test" title="test"></p>
+                <p>CTFHUB是一个在线平台，主要用于网络安全爱好者进行攻防演练，提升自己的技能。本篇学习web前置技能HTTP协议的请求方式。</p>
+<span id="more"></span>
+<h2 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h2><p>如图所示，这道题的题干还是比较简单的。只要用CTFHUB的请求方法对网站发起请求就可以得到flag了。<br><img src="/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/%E9%A2%98%E7%9B%AE.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><blockquote>
+<p>考点：请求方式</p>
+</blockquote>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>说明</th>
+<th>版本号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取资源</td>
+<td>HTTP 1.0、HTTP 1.1</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>传输实体主体</td>
+<td>HTTP 1.0、HTTP 1.1</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>传输文件</td>
+<td>HTTP 1.0、HTTP 1.1</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>获得报文首部</td>
+<td>HTTP 1.0、HTTP 1.1</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除文件</td>
+<td>HTTP 1.0、HTTP 1.1</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>访问支持的方法</td>
+<td>HTTP 1.1</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>追踪路径</td>
+<td>HTTP 1.1</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>要求用隧道协议连接代理</td>
+<td>HTTP 1.1</td>
+</tr>
+<tr>
+<td>LINK</td>
+<td>建立和资源之间的联系</td>
+<td>HTTP 1.1</td>
+</tr>
+<tr>
+<td>UNLINE</td>
+<td>断开连接关系</td>
+<td>HTTP 1.1</td>
+</tr>
+</tbody></table>
+<h3 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h3><ol>
+<li>cURL：全称 client URL，客户端 URL 工具。</li>
+<li>cURL 是一种常用的命令行工具，主要用来请求 Web 服务器，也可以用来下载文件。</li>
+<li>一般情况下，Linux&#x2F;Windows&#x2F;Mac 系统都默认安装了 cURL 指令，所以我们可以直接使用。</li>
+</ol>
+<h3 id="burpsuite（bp）"><a href="#burpsuite（bp）" class="headerlink" title="burpsuite（bp）"></a>burpsuite（bp）</h3><p>Burp Suite是一款Web安全领域的跨平台工具，基于Java开发。它集成了很多用于发现常见Web漏洞的模块，如：Proxy、Spider、Intruder、Repeater等。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="一、curl"><a href="#一、curl" class="headerlink" title="一、curl"></a>一、curl</h3><p>如题干所说，一开始就用CTFHUB的方法curl靶场网址是行不通的。<br><img src="/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/%E9%94%99%E8%AF%AF.png" srcset="/img/loading.gif" lazyload><br>对主页进行curl就能得到flag。<br><img src="/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/curl.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="二、bp"><a href="#二、bp" class="headerlink" title="二、bp"></a>二、bp</h3><p>同样的思路，用bp拦截修改请求方法再发出去即可<br><img src="/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/bp.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题还是比较简单的，可以了解和巩固基础知识。</p>
 
                 
               </div>
@@ -282,11 +360,32 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Pratice/" class="category-chain-item">Pratice</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6/" class="print-no-link">#测试文件</a>
+        <a href="/tags/CTFHUB/" class="print-no-link">#CTFHUB</a>
       
     </div>
   
@@ -298,8 +397,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>test</div>
-      <div>http://example.com/2024/02/01/test/</div>
+      <div>HTTP-请求方式</div>
+      <div>http://example.com/2024/02/05/HTTP-请求方式/</div>
     </div>
     <div class="license-meta">
       
@@ -311,7 +410,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月1日</div>
+          <div>2024年2月5日</div>
         </div>
       
       
@@ -343,18 +442,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/05/HTTP-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/" title="HTTP-请求方式">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HTTP-请求方式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/01/VulnServer-HTER/" title="VulnServer-HTER">
-                        <span class="hidden-mobile">VulnServer-HTER</span>
+                      <a href="/2024/02/01/test/" title="test">
+                        <span class="hidden-mobile">test</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
